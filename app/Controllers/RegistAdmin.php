@@ -38,7 +38,7 @@ class RegistAdmin extends BaseController
 
         $data = [
             'email' => $email, 
-            'password' => password_hash($password, PASSWORD_DEFAULT), // Hash password sebelum disimpan
+            'password' => password_hash($password, PASSWORD_DEFAULT), 
         ];
         
         if (!$model->insert($data)) {

@@ -11,3 +11,5 @@ $routes->get('/log_admin', 'AuthController::index');
 $routes->get('/dashboard', 'DashboardAdmin::index');
 $routes->post('regist_admin/register', 'RegistAdmin::register');
 $routes->post('login_admin', 'AuthController::login');
+$routes->get('/login', 'AuthController::login'); 
+$routes->get('/tour_tables', 'TourController::index', ['filter' => 'auth']); // Pastikan ini ada

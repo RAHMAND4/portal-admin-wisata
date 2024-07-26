@@ -20,13 +20,22 @@ class AuthController extends BaseController
         $adminModel = new AdminModel(); 
         $admin = $adminModel->where('email', $email)->first(); 
         
-        // Debugging: Cek nilai $admin dan password
         log_message('info', 'Admin: ' . print_r($admin, true));
-        log_message('info', 'Password Verify: ' . password_verify($password, $admin['password']));
 
-        if ($admin && password_verify($password, $admin['password'])) { 
-            return redirect()->to('/dashboard');
+        if ($admin) {
+            log_message('info', 'Password Verify: ' . password_verify($password, $admin['password']));
+            
+            if (password_verify($password, $admin['password'])) { 
+
+                session()->set('isLoggedIn', true);
+                session()->set('adminEmail', $admin['email']); 
+                return redirect()->to('/dashboard');
+            } else {
+                session()->setFlashdata('login_error', 'Email atau password yang dimasukkan salah.'); 
+                return redirect()->to('/log_admin'); 
+            }
         } else {
+            log_message('info', 'Admin not found for email: ' . $email);
             session()->setFlashdata('login_error', 'Email atau password yang dimasukkan salah.'); 
             return redirect()->to('/log_admin'); 
         }
