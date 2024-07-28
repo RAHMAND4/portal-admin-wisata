@@ -140,7 +140,7 @@
             <ul class="navbar-nav  justify-content-end">
 
             <li class="mt-2">
-                <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
+                <a class="github-button"  data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                 <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -230,7 +230,7 @@
                 </ul>
             </li>
             <li class="nav-item d-flex align-items-center">
-                <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+                <a href="<?= base_url('/log_admin') ?>"  class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Sign In</span>
                 </a>
@@ -244,7 +244,7 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
             <div class="card-header p-3 pt-2">
-                <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
+                <div class="icon icon-lg icon-shape bg-gradient-info shadow-dark text-center border-radius-xl mt-n4 position-absolute">
                 <i class="material-icons opacity-10">weekend</i>
                 </div>
                 <div class="text-end pt-1">
@@ -261,7 +261,7 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
             <div class="card-header p-3 pt-2">
-                <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <div class="icon icon-lg icon-shape shadow-primary text-center border-radius-xl mt-n4 position-absolute" style="background-color: #DC0909;">
                 <i class="material-icons opacity-10">person</i>
                 </div>
                 <div class="text-end pt-1">
@@ -278,7 +278,7 @@
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
             <div class="card-header p-3 pt-2">
-                <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
+                <div class="icon icon-lg icon-shape shadow-success text-center border-radius-xl mt-n4 position-absolute"style="background-color: #F3D200;">
                 <i class="material-icons opacity-10">person</i>
                 </div>
                 <div class="text-end pt-1">
@@ -295,7 +295,7 @@
         <div class="col-xl-3 col-sm-6">
             <div class="card">
             <div class="card-header p-3 pt-2">
-                <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
+                <div class="icon icon-lg icon-shape  shadow-info text-center border-radius-xl mt-n4 position-absolute" style="background-color: #19DC09;">
                 <i class="material-icons opacity-10">weekend</i>
                 </div>
                 <div class="text-end pt-1">
@@ -314,7 +314,7 @@
         <div class="col-lg-4 col-md-6 mt-4 mb-4">
             <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+                <div class="shadow-primary border-radius-lg py-3 pe-1"style="background-color: #DC0909;">
                 <div class="chart">
                     <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
                 </div>
@@ -334,7 +334,7 @@
         <div class="col-lg-4 col-md-6 mt-4 mb-4">
             <div class="card z-index-2  ">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
+                <div class=" shadow-success border-radius-lg py-3 pe-1" style="background-color: #F3D200;">
                 <div class="chart">
                     <canvas id="chart-line" class="chart-canvas" height="170"></canvas>
                 </div>
@@ -354,7 +354,7 @@
         <div class="col-lg-4 mt-4 mb-3">
             <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                <div class="shadow-dark border-radius-lg py-3 pe-1" style="background-color: #19DC09;">
                 <div class="chart">
                     <canvas id="chart-line-tasks" class="chart-canvas" height="170"></canvas>
                 </div>

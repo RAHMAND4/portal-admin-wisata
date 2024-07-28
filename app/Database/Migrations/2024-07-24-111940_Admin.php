@@ -8,7 +8,6 @@ class Admin extends Migration
 {
     public function up()
     {
-        // Menambahkan tabel admin
         $this->forge->addField([
             'id' => [
                 'type' => 'INT',
@@ -35,7 +34,6 @@ class Admin extends Migration
 
     public function down()
     {
-        // Menghapus tabel admin
         $this->forge->dropTable('admin');
     }
 }

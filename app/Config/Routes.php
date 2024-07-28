@@ -12,4 +12,8 @@ $routes->get('/dashboard', 'DashboardAdmin::index');
 $routes->post('regist_admin/register', 'RegistAdmin::register');
 $routes->post('login_admin', 'AuthController::login');
 $routes->get('/login', 'AuthController::login'); 
-$routes->get('/tour_tables', 'TourController::index', ['filter' => 'auth']); // Pastikan ini ada
+$routes->get('/tour_tables', 'TourController::index', ['filter' => 'auth']); 
+$routes->post('/tour/add', 'TourController::add');
+$routes->post('/tour/update', 'TourController::update');
+$routes->delete('/tour/delete/(:num)', 'TourController::delete/$1');
+$routes->get('/api/tour', 'TourController::getTour');

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>
-    Material Dashboard 2 by Creative Tim
+    Tour Tables
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
@@ -26,6 +26,7 @@
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
@@ -138,7 +139,7 @@
             </div>
             <ul class="navbar-nav  justify-content-end">
             <li class="mt-2">
-                <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
+                <a class="github-button" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                 <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
@@ -228,7 +229,7 @@
                 </ul>
             </li>
             <li class="nav-item d-flex align-items-center">
-                <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+                <a href="<?= base_url('/log_admin') ?>" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
                 <span class="d-sm-inline d-none">Sign In</span>
                 </a>
@@ -240,198 +241,74 @@
     <!-- End Navbar -->
     <div class="container-fluid py-4">
         <div class="row">
+            <div class="col-sm-4">
+                
+            </div>
         <div class="col-12">
             <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                <h6 class="text-white text-capitalize ps-3">Authors table</h6>
+                <div class="d-flex justify-content-between align-items-center shadow-primary border-radius-lg pt-4 pb-3" style="background-color: #F3D200;">
+                <h6 class="text-white text-capitalize ps-3">Tour table</h6>
+                <button type="button" class="btn btn-success add-new m-2" data-bs-toggle="modal" data-bs-target="#addTourModal">
+                    <i class="fa fa-plus"></i> Tambah Wisata
+                </button>
                 </div>
             </div>
-            <div class="card-body px-0 pb-2">
-                <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                    <thead>
-                    <tr>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
-                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
-                        <th class="text-secondary opacity-7"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                        <div class="d-flex px-2 py-1">
-                            <div>
-                            <img src="../assets_dashboard/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
-                            </div>
-                        </div>
-                        </td>
-                        <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Organization</p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                        </td>
-                        <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
-                        </td>
-                        <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            Edit
-                        </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <div class="d-flex px-2 py-1">
-                            <div>
-                            <img src="../assets_dashboard/img/team-3.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user2">
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                            <p class="text-xs text-secondary mb-0">alexa@creative-tim.com</p>
-                            </div>
-                        </div>
-                        </td>
-                        <td>
-                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                        </td>
-                        <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">11/01/19</span>
-                        </td>
-                        <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            Edit
-                        </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <div class="d-flex px-2 py-1">
-                            <div>
-                            <img src="../assets_dashboard/img/team-4.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user3">
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                            <p class="text-xs text-secondary mb-0">laurent@creative-tim.com</p>
-                            </div>
-                        </div>
-                        </td>
-                        <td>
-                        <p class="text-xs font-weight-bold mb-0">Executive</p>
-                        <p class="text-xs text-secondary mb-0">Projects</p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                        </td>
-                        <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">19/09/17</span>
-                        </td>
-                        <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            Edit
-                        </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <div class="d-flex px-2 py-1">
-                            <div>
-                            <img src="../assets_dashboard/img/team-3.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user4">
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Michael Levi</h6>
-                            <p class="text-xs text-secondary mb-0">michael@creative-tim.com</p>
-                            </div>
-                        </div>
-                        </td>
-                        <td>
-                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
-                        </td>
-                        <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">24/12/08</span>
-                        </td>
-                        <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            Edit
-                        </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <div class="d-flex px-2 py-1">
-                            <div>
-                            <img src="../assets_dashboard/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user5">
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Richard Gran</h6>
-                            <p class="text-xs text-secondary mb-0">richard@creative-tim.com</p>
-                            </div>
-                        </div>
-                        </td>
-                        <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Executive</p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                        </td>
-                        <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">04/10/21</span>
-                        </td>
-                        <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            Edit
-                        </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                        <div class="d-flex px-2 py-1">
-                            <div>
-                            <img src="../assets_dashboard/img/team-4.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user6">
-                            </div>
-                            <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                            <p class="text-xs text-secondary mb-0">miriam@creative-tim.com</p>
-                            </div>
-                        </div>
-                        </td>
-                        <td>
-                        <p class="text-xs font-weight-bold mb-0">Programator</p>
-                        <p class="text-xs text-secondary mb-0">Developer</p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-secondary">Offline</span>
-                        </td>
-                        <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">14/09/20</span>
-                        </td>
-                        <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
-                            Edit
-                        </a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                </div>
+            <div class="container-lg">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
             </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">no</th>
+                        <th scope="col">image</th>
+                        <th scope="col">Nama Wisata</th>
+                        <th scope="col">Deskripsi</th>
+                        <th scope="col">Lokasi</th>
+                        <th scope="col">Harga</th>
+                        <th scope="col">kapasitas jumlah pengunjung</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($tours as $index => $tour): ?>
+                        <tr>
+                            <td><?= $index + 1 ?></td>
+                            <td>
+                                <img src="<?= base_url('uploads/' . esc($tour['image_url'])) ?>" alt="Image" width="100">
+                            </td>
+                            <td><?= esc($tour['nama_wisata']) ?></td>
+                            <td><?= esc(substr($tour['description'], 0, 20)) ?>...</td>
+                            <td><?= esc(substr($tour['location'], 0, 10)) ?></td>
+                            <td><?= esc($tour['price']) ?></td>
+                            <td><?= esc($tour['available_seats']) ?></td>
+                            <td><?= esc($tour['rating']) ?></td>
+                            <td>
+                                <button class="btn btn-warning edit-btn" 
+                                        data-id="<?= esc($tour['id']) ?>" 
+                                        data-nama="<?= esc($tour['nama_wisata']) ?>" 
+                                        data-description="<?= esc($tour['description']) ?>" 
+                                        data-location="<?= esc($tour['location']) ?>" 
+                                        data-price="<?= esc($tour['price']) ?>" 
+                                        data-available-seats="<?= esc($tour['available_seats']) ?>" 
+                                        data-rating="<?= esc($tour['rating']) ?>" 
+                                        data-image-url="<?= esc($tour['image_url']) ?>" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#editTourModal">Edit</button>
+                                <button class="btn btn-danger delete-btn" 
+                                        data-id="<?= esc($tour['id']) ?>" 
+                                        data-nama="<?= esc($tour['nama_wisata']) ?>">Delete</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>     
             </div>
         </div>
         </div>
@@ -520,3 +397,240 @@
 </body>
 
 </html>
+
+<div class="modal fade" id="addTourModal" tabindex="-1" aria-labelledby="addTourModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: white;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addTourModalLabel">Tambah Wisata</h5>
+                <button type="button" class="btn-close" style="background-color: black;" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addTourForm" method="post" action="<?= base_url('tour/add') ?>" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="nama_wisata" class="form-label">Nama Wisata</label>
+                        <input type="text" class="form-control border" id="nama_wisata" name="nama_wisata" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Deskripsi</label>
+                        <textarea class="form-control border" id="description" name="description" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Lokasi</label>
+                        <input type="text" class="form-control border" id="location" name="location" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Harga</label>
+                        <input type="number" class="form-control border" id="price" name="price" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="available_seats" class="form-label">jumlah kapasitas pengunjung </label>
+                        <input type="number" class="form-control border" id="available_seats" name="available_seats" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <input type="number" class="form-control border" id="rating" name="rating" step="0.1" min="0" max="5" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image_url" class="form-label">URL Gambar</label>
+                        <input type="file" class="form-control border" id="image_url" name="image_url" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Tambah</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit -->
+<div class="modal fade" id="editTourModal" tabindex="-1" aria-labelledby="editTourModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: white;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editTourModalLabel">Edit Wisata</h5>
+                <button type="button" class="btn-close" style="background-color: black;" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editTourForm" method="post" action="<?= base_url('tour/update') ?>" enctype="multipart/form-data">
+                    <input type="hidden" id="tour_id" name="tour_id">
+                    <div class="mb-3">
+                        <label for="edit_nama_wisata" class="form-label">Nama Wisata</label>
+                        <input type="text" class="form-control border" id="edit_nama_wisata" name="nama_wisata" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_description" class="form-label">Deskripsi</label>
+                        <textarea class="form-control border" id="edit_description" name="description" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_location" class="form-label">Lokasi</label>
+                        <input type="text" class="form-control border" id="edit_location" name="location" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_price" class="form-label">Harga</label>
+                        <input type="number" class="form-control border" id="edit_price" name="price" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_available_seats" class="form-label">Jumlah Kapasitas Pengunjung</label>
+                        <input type="number" class="form-control border" id="edit_available_seats" name="available_seats" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_rating" class="form-label">Rating</label>
+                        <input type="number" class="form-control border" id="edit_rating" name="rating" step="0.1" min="0" max="5" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit_image_url" class="form-label">Gambar Saat Ini</label>
+                        <div id="current_image_container">
+                            <img id="current_image" src="" alt="Current Image" width="100" style="display: none;">
+                            <p id="current_image_name"></p>
+                        </div>
+                        <label for="edit_image_url" class="form-label">Upload Gambar Baru</label>
+                        <input type="file" class="form-control border" id="edit_image_url" name="image_url" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Konfirmasi Delete -->
+<div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteConfirmModalLabel">Konfirmasi Hapus</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin ingin menghapus <span id="tour_name"></span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Hapus</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const editButtons = document.querySelectorAll('.edit-btn');
+        editButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                document.getElementById('tour_id').value = this.getAttribute('data-id');
+                document.getElementById('edit_nama_wisata').value = this.getAttribute('data-nama');
+                document.getElementById('edit_description').value = this.getAttribute('data-description');
+                document.getElementById('edit_location').value = this.getAttribute('data-location');
+                document.getElementById('edit_price').value = this.getAttribute('data-price');
+                document.getElementById('edit_available_seats').value = this.getAttribute('data-available-seats');
+                document.getElementById('edit_rating').value = this.getAttribute('data-rating');
+                
+                // Menampilkan gambar saat ini
+                const imageUrl = this.getAttribute('data-image-url');
+                const currentImage = document.getElementById('current_image');
+                const currentImageName = document.getElementById('current_image_name');
+
+                if (imageUrl) {
+                    currentImage.src = `<?= base_url('uploads/') ?>${imageUrl}`;
+                    currentImage.style.display = 'block';
+                    currentImageName.textContent = imageUrl;
+                } else {
+                    currentImage.style.display = 'none';
+                    currentImageName.textContent = '';
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    document.getElementById('addTourForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        
+        // Log data yang akan dikirim
+        for (const [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
+
+        fetch('<?= base_url('tour/add') ?>', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if (data.success) {
+                $('#addTourModal').modal('hide'); 
+                location.reload(); 
+            } else {
+                console.error(data.errors);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const editButtons = document.querySelectorAll('.edit-btn');
+        editButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                document.getElementById('tour_id').value = this.getAttribute('data-id');
+                document.getElementById('edit_nama_wisata').value = this.getAttribute('data-nama');
+                document.getElementById('edit_description').value = this.getAttribute('data-description');
+                document.getElementById('edit_location').value = this.getAttribute('data-location');
+                document.getElementById('edit_price').value = this.getAttribute('data-price');
+                document.getElementById('edit_available_seats').value = this.getAttribute('data-available-seats');
+                document.getElementById('edit_rating').value = this.getAttribute('data-rating');
+                
+                // Menampilkan gambar saat ini
+                const imageUrl = this.getAttribute('data-image-url');
+                const currentImage = document.getElementById('current_image');
+                const currentImageName = document.getElementById('current_image_name');
+
+                if (imageUrl) {
+                    currentImage.src = `<?= base_url('uploads/') ?>${imageUrl}`;
+                    currentImage.style.display = 'block';
+                    currentImageName.textContent = imageUrl;
+                } else {
+                    currentImage.style.display = 'none';
+                    currentImageName.textContent = '';
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        let tourIdToDelete;
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                tourIdToDelete = this.getAttribute('data-id');
+                const tourName = this.getAttribute('data-nama');
+                document.getElementById('tour_name').textContent = tourName;
+                const deleteConfirmModal = new bootstrap.Modal(document.getElementById('deleteConfirmModal'));
+                deleteConfirmModal.show();
+            });
+        });
+
+        document.getElementById('confirmDelete').addEventListener('click', function () {
+            fetch(`<?= base_url('tour/delete') ?>/${tourIdToDelete}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    location.reload(); // Reload halaman setelah berhasil menghapus
+                } else {
+                    alert('Gagal menghapus data.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+</script>
