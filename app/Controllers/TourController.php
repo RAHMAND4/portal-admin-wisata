@@ -9,19 +9,26 @@ use CodeIgniter\HTTP\ResponseInterface;
 class TourController extends BaseController
 {
     public function index()
-    {
-        $tourModel = new \App\Models\TourModel();
-        $data['tours'] = $tourModel->findAll(); // Ambil semua data tour
-        return view('TourTables', $data); // Kirim data ke view
+{
+    $tourModel = new \App\Models\TourModel();
+    $data['tours'] = $tourModel->findAll();
+    
+    foreach ($data['tours'] as &$tour) {
+        $imagePath = ROOTPATH . 'public/uploads/' . $tour['image_url'];
+        log_message('info', 'Checking image: ' . $imagePath . ' - Exists: ' . (file_exists($imagePath) ? 'Yes' : 'No'));
+        $tour['image_url'] = base_url('uploads/' . $tour['image_url']);
     }
+    
+    return view('TourTables', $data);
+}
 
     public function add(){
         $data = $this->request->getPost(); 
         $file = $this->request->getFile('image_url');
         if ($file->isValid() && !$file->hasMoved()) {
-            $file->move(WRITEPATH . 'uploads'); 
-            $data['image_url'] = base_url('uploads/' . $file->getName()); // Pastikan ini mengembalikan nama file yang benar
-            log_message('info', 'File yang diunggah: ' . $data['image_url']); 
+            $newName = $file->getRandomName();
+            $file->move(ROOTPATH . 'public/uploads', $newName);
+            $data['image_url'] = $newName;
         } else {
             return $this->response->setJSON(['success' => false, 'errors' => ['image_url' => 'File tidak valid.']]);
         }
@@ -38,37 +45,43 @@ class TourController extends BaseController
         }
     }
 
-    public function update() {
-        $tourModel = new \App\Models\TourModel();
-        $data = $this->request->getPost();
+    public function update() 
+{
+    $tourModel = new \App\Models\TourModel();
+    $data = $this->request->getPost();
 
-        // Cek apakah ada file gambar yang diunggah
-        $file = $this->request->getFile('image_url');
-        if ($file && $file->isValid()) {
-            // Pindahkan file ke folder uploads
-            $file->move(WRITEPATH . 'uploads'); 
-            $data['image_url'] = base_url('uploads/' . $file->getName()); // Ambil nama file yang diunggah
-            log_message('info', 'File yang diunggah: ' . $data['image_url']);
+    // Log untuk debugging
+    log_message('info', 'Update method called. POST data: ' . print_r($_POST, true));
+    log_message('info', 'File upload info: ' . print_r($_FILES, true));
+
+    // Cek apakah ada file gambar yang diunggah
+    $file = $this->request->getFile('image_url');
+    if ($file && $file->isValid() && !$file->hasMoved()) {
+        // Pindahkan file ke folder uploads
+        $newName = $file->getRandomName();
+        if ($file->move(ROOTPATH . 'public/uploads', $newName)) {
+            $data['image_url'] = $newName; // Simpan hanya nama file
         } else {
-            // Jika tidak ada file yang diunggah, gunakan gambar yang sudah ada
-            $existingTour = $tourModel->find($data['tour_id']);
-            $data['image_url'] = $existingTour['image_url']; // Ambil URL gambar yang sudah ada
+            log_message('error', 'File upload failed: ' . $file->getErrorString());
+            return redirect()->back()->with('error', 'File upload failed: ' . $file->getErrorString());
         }
-
-        // Update data di database
-        $tourModel->update($data['tour_id'], [
-            'nama_wisata' => $data['nama_wisata'],
-            'description' => $data['description'],
-            'location' => $data['location'],
-            'price' => $data['price'],
-            'available_seats' => $data['available_seats'],
-            'rating' => $data['rating'],
-            'image_url' => $data['image_url'], 
-        ]);
-
-        return redirect()->to('/tour_tables');
+    } else {
+        // Jika tidak ada file yang diunggah, gunakan gambar yang sudah ada
+        $existingTour = $tourModel->find($data['tour_id']);
+        $data['image_url'] = $existingTour['image_url']; // Gunakan gambar yang sudah ada
     }
 
+    log_message('info', 'File upload details: ' . print_r($file->getErrorString(), true));
+    log_message('info', 'File upload path: ' . $file->getTempName());
+
+    // Update data di database
+    if ($tourModel->update($data['tour_id'], $data)) {
+        return redirect()->to('/tour_tables')->with('success', 'Tour updated successfully');
+    } else {
+        log_message('error', 'Database update failed: ' . print_r($tourModel->errors(), true));
+        return redirect()->back()->withInput()->with('error', 'Failed to update tour');
+    }
+}
     public function delete($id) {
         $tourModel = new \App\Models\TourModel();
         $tourModel->delete($id);
@@ -77,13 +90,43 @@ class TourController extends BaseController
 
     public function getTour() {
         $tourModel = new \App\Models\TourModel();
-        $tours = $tourModel->findAll(); // Ambil semua data tour
-
-        // Tambahkan base_url ke image_url
-        foreach ($tours as &$tour) {
+    $tours = $tourModel->findAll();
+    foreach ($tours as &$tour) {
+        $imagePath = ROOTPATH . 'public/uploads/' . $tour['image_url'];
+        if (file_exists($imagePath)) {
             $tour['image_url'] = base_url('uploads/' . $tour['image_url']);
+        } else {
+            $tour['image_url'] = base_url('path/to/placeholder/image.jpg');
+            log_message('error', 'Image not found: ' . $imagePath);
         }
-
-        return $this->response->setJSON($tours); // Kembalikan data dalam format JSON
     }
+
+    return $this->response->setJSON($tours);
+    }
+
+    public function __construct()
+    {
+        // Tambahkan kode ini di awal method __construct()
+        header('Access-Control-Allow-Origin: *');
+        header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+        $method = $_SERVER['REQUEST_METHOD'];
+        if ($method == "OPTIONS") {
+            die();
+        }
+    }
+    public function showImage($filename)
+    {
+        $path = ROOTPATH . 'public/uploads/' . $filename;
+        if (file_exists($path)) {
+            $mime = mime_content_type($path);
+            header('Content-Type: ' . $mime);
+            readfile($path);
+        } else {
+            log_message('error', 'Image not found: ' . $path);
+            // Tampilkan gambar placeholder atau berikan respons 404
+            header("HTTP/1.0 404 Not Found");
+            echo "Image not found: " . $filename;
+        }
+}
 }

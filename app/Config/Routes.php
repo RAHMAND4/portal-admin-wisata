@@ -17,3 +17,7 @@ $routes->post('/tour/add', 'TourController::add');
 $routes->post('/tour/update', 'TourController::update');
 $routes->delete('/tour/delete/(:num)', 'TourController::delete/$1');
 $routes->get('/api/tour', 'TourController::getTour');
+$routes->options('(:any)', function() {
+    return '';
+});
+$routes->get('uploads/(:any)', 'TourController::showImage/$1');

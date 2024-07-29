@@ -25,14 +25,14 @@ class TourModel extends Model
     protected array $castHandlers = [];
 
     // Validation
-    protected $validationRules      = [
-        'nama_wisata' => 'required|min_length[3]|max_length[255]',
+    protected $validationRules = [
+        'nama_wisata' => 'required',
         'description' => 'required',
-        'location' => 'required|max_length[255]',
-        'price' => 'required|decimal',
+        'location' => 'required',
+        'price' => 'required|numeric',
         'available_seats' => 'required|integer',
-        'image_url' => 'required|valid_url', 
-        'rating' => 'required|decimal|greater_than_equal_to[0]|less_than_equal_to[5]',
+        'rating' => 'required|numeric|less_than_equal_to[5.0]',
+        'image_url' => 'permit_empty',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;

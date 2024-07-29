@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets_dashboard/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets_dashboard/img/favicon.png">
-    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>
     Tour Tables
@@ -278,8 +276,15 @@
                         <tr>
                             <td><?= $index + 1 ?></td>
                             <td>
-                                <img src="<?= base_url('uploads/' . esc($tour['image_url'])) ?>" alt="Image" width="100">
-                            </td>
+                            <?php
+    $imagePath = ROOTPATH . 'public/uploads/' . basename($tour['image_url']);
+    if (file_exists($imagePath)): ?>
+        <img src="<?= base_url('uploads/' . basename($tour['image_url'])) ?>" alt="Image" width="100">
+    <?php else: ?>
+        Image not found: <?= esc(basename($tour['image_url'])) ?>
+    <?php endif; ?>
+</td>
+
                             <td><?= esc($tour['nama_wisata']) ?></td>
                             <td><?= esc(substr($tour['description'], 0, 20)) ?>...</td>
                             <td><?= esc(substr($tour['location'], 0, 10)) ?></td>
